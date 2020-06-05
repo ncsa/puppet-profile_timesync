@@ -1,0 +1,7 @@
+---
+profile_chrony::makestep_seconds: 600
+profile_chrony::makestep_updates: 5
+profile_chrony::client::servers:
+  - ntp.ncsa.illinois.edu
+profile_chrony::server::servers:
+  - ntp.ncsa.illinois.edu
