@@ -7,14 +7,12 @@
 ### Classes
 
 * [`profile_timesync`](#profile_timesync): Configures Chrony as an NTP Client or Server
-* [`profile_timesync::client`](#profile_timesyncclient): Configures chronyd as an NTP client
-* [`profile_timesync::server`](#profile_timesyncserver): Configures chronyd as an NTP server
 
 ## Classes
 
 ### <a name="profile_timesync"></a>`profile_timesync`
 
-This profile conifures chronyd as an NTP client or server
+This profile configures chronyd as an NTP client or server
 
 * **See also**
   * https://chrony.tuxfamily.org/
@@ -31,8 +29,24 @@ include profile_timesync
 
 The following parameters are available in the `profile_timesync` class:
 
+* [`servers`](#servers)
+* [`queryhosts`](#queryhosts)
 * [`makestep_seconds`](#makestep_seconds)
 * [`makestep_updates`](#makestep_updates)
+
+##### <a name="servers"></a>`servers`
+
+Data type: `Variant[Hash,Array[Stdlib::Host]]`
+
+Array of hostnames or addresses for upstream NTP servers
+
+##### <a name="queryhosts"></a>`queryhosts`
+
+Data type: `Array[Stdlib::Host]`
+
+Array of subnets allowed to query this server via NTP
+Format can be a single IP or CIDR subnet
+Empty by default, if specified turns the machine into a Chrony server.
 
 ##### <a name="makestep_seconds"></a>`makestep_seconds`
 
@@ -45,66 +59,4 @@ Maximum clock skew before steping clock sync
 Data type: `Integer`
 
 Number of previous updates before steping clock sync will run
-
-### <a name="profile_timesyncclient"></a>`profile_timesync::client`
-
-Configures chronyd as an NTP client
-
-* **See also**
-  * https://chrony.tuxfamily.org/
-
-#### Examples
-
-##### 
-
-```puppet
-include profile_timesync::client
-```
-
-#### Parameters
-
-The following parameters are available in the `profile_timesync::client` class:
-
-* [`servers`](#servers)
-
-##### <a name="servers"></a>`servers`
-
-Data type: `Variant[Hash,Array[Stdlib::Host]]`
-
-Array of hostnames or addresses for upstream NTP servers
-
-### <a name="profile_timesyncserver"></a>`profile_timesync::server`
-
-Configures chronyd as an NTP server
-
-* **See also**
-  * https://chrony.tuxfamily.org/
-
-#### Examples
-
-##### 
-
-```puppet
-include profile_timesync::server
-```
-
-#### Parameters
-
-The following parameters are available in the `profile_timesync::server` class:
-
-* [`servers`](#servers)
-* [`queryhosts`](#queryhosts)
-
-##### <a name="servers"></a>`servers`
-
-Data type: `Variant[Hash,Array[Stdlib::Host]]`
-
-Array of hostnames or addresses for upstream NTP servers
-
-##### <a name="queryhosts"></a>`queryhosts`
-
-Data type: `Array[Stdlib::IP::Address::V4]`
-
-Array of subnets allowed to query this server via NTP
-Format can be a single IP or CIDR subnet
 
