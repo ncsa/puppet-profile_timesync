@@ -6,7 +6,10 @@
   "license": "Apache-2.0",
   "source": "https://github.com/ncsa/puppet-profile_timesync",
   "dependencies": [
-    { "name": "aboe/chrony", "version_requirement": "0.3.2" }
+    {
+      "name": "aboe/chrony",
+      "version_requirement": "0.3.2"
+    }
   ],
   "operatingsystem_support": [
     {
@@ -40,7 +43,7 @@
       "version_requirement": ">= 4.10.0 < 7.0.0"
     }
   ],
-  "pdk-version": "1.18.0",
-  "template-url": "pdk-default#1.18.0",
-  "template-ref": "tags/1.18.0-0-g095317c"
+  "pdk-version": "2.1.0",
+  "template-url": "pdk-default#2.1.0",
+  "template-ref": "tags/2.1.0-0-ga675ea5"
 }
