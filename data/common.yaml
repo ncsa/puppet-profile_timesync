@@ -1,6 +1,9 @@
 ---
-profile_timesync::makestep_seconds: 600
-profile_timesync::makestep_updates: 5
-profile_timesync::servers:
-  - "ntp.ncsa.illinois.edu"
+profile_timesync::makestep_seconds: 1.0
+profile_timesync::makestep_updates: 3
+profile_timesync::pools:
+  "ntp.ncsa.illinois.edu":
+    - "iburst"
+    - "maxsources 2"
+profile_timesync::servers: []
 profile_timesync::queryhosts: []

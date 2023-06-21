@@ -7,6 +7,7 @@
 ### Classes
 
 * [`profile_timesync`](#profile_timesync): Configures Chrony as an NTP Client or Server
+* [`profile_timesync::vmware`](#profile_timesyncvmware): Disable vmware tools timesync
 
 ## Classes
 
@@ -29,16 +30,23 @@ include profile_timesync
 
 The following parameters are available in the `profile_timesync` class:
 
+* [`pools`](#pools)
 * [`servers`](#servers)
 * [`queryhosts`](#queryhosts)
 * [`makestep_seconds`](#makestep_seconds)
 * [`makestep_updates`](#makestep_updates)
 
+##### <a name="pools"></a>`pools`
+
+Data type: `Variant[Hash,Array[Stdlib::Host]]`
+
+hostnames or addresses for upstream NTP servers
+
 ##### <a name="servers"></a>`servers`
 
 Data type: `Variant[Hash,Array[Stdlib::Host]]`
 
-Array of hostnames or addresses for upstream NTP servers
+hostnames or addresses for upstream NTP servers
 
 ##### <a name="queryhosts"></a>`queryhosts`
 
@@ -59,4 +67,16 @@ Maximum clock skew before steping clock sync
 Data type: `Integer`
 
 Number of previous updates before steping clock sync will run
+
+### <a name="profile_timesyncvmware"></a>`profile_timesync::vmware`
+
+Disable vmware tools timesync
+
+#### Examples
+
+##### 
+
+```puppet
+include profile_timesync::vmware
+```
 
