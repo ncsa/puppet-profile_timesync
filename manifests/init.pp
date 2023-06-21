@@ -5,8 +5,11 @@
 # @example
 #   include profile_timesync
 #
+# @param pools
+#   hostnames or addresses for upstream NTP servers
+#
 # @param servers
-#   Array of hostnames or addresses for upstream NTP servers
+#   hostnames or addresses for upstream NTP servers
 #
 # @param queryhosts
 #   Array of subnets allowed to query this server via NTP
@@ -22,16 +25,19 @@
 # @see https://chrony.tuxfamily.org/
 #
 class profile_timesync (
+  Variant[Hash,Array[Stdlib::Host]] $pools,
   Variant[Hash,Array[Stdlib::Host]] $servers,
   Array[Stdlib::Host] $queryhosts,
   Numeric $makestep_seconds,
   Integer $makestep_updates,
 ) {
+  include profile_timesync::vmware
 
   $step_sec = lookup('profile_timesync::makestep_seconds')
   $step_upd = lookup('profile_timesync::makestep_updates')
 
-  class { '::chrony':
+  class { 'chrony':
+    pools            => $pools,
     servers          => $servers,
     makestep_seconds => $step_sec,
     makestep_updates => $step_upd,

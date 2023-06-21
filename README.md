@@ -10,10 +10,4 @@ Configures chronyd as a client or server
  
 ## Reference
 
-### class profile_timesync (
--  Variant[Hash,Array[Stdlib::Host]] $servers,
--  Array[Stdlib::Host] $queryhosts,
--  Numeric $makestep_seconds,
--  Integer $makestep_updates,
-
 [REFERENCE.md](REFERENCE.md)
